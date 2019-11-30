@@ -1,0 +1,30 @@
+version: '2.3'
+services:
+  cpu:
+    image: torchtutorial:cpu
+    build:
+      context: .
+      dockerfile: Dockerfile.cpu
+    environment:
+      - PYTHONPATH=/home/src/models:/home/src/util
+      - UID=1000
+      - GID=1000
+    volumes:
+      - /home/richard/Projects/SHARED/DATASETS:/home/data
+      - /home/richard/Projects/SHARED/STORAGE:/home/storage
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+  gpu:
+    image: torchtutorial:gpu
+    build:
+      context: .
+      dockerfile: Dockerfile.gpu
+    environment:
+      - PYTHONPATH=/home/src/models:/home/src/util
+      - UID=1000
+      - GID=1000
+    volumes:
+      - /home/richard/Projects/SHARED/DATASETS:/home/data
+      - /home/richard/Projects/SHARED/STORAGE:/home/storage
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
