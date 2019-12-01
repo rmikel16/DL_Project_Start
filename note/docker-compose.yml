@@ -1,0 +1,15 @@
+version: '3'
+services:
+  notebook:
+    build:
+      context: .
+      dockerfile: Dockerfile.notebook
+    image: torchtutorial:notebook
+    ports:
+      - "8888:8888"
+    volumes:
+      - /home/richard/Projects/SHARED/DATASETS:/home/jovyan/data
+      - /home/richard/Projects/SHARED/STORAGE:/home/jovyan/storage
+      - .:/home/jovyan/src
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
